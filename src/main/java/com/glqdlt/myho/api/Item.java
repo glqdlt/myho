@@ -1,14 +1,17 @@
 package com.glqdlt.myho.api;
 
+import com.glqdlt.myho.api.attribute.Attribute;
+
 import java.time.LocalDateTime;
+import java.util.LinkedList;
 import java.util.List;
 
-public class Item implements Entity {
-    private Integer identity;
-    private String title;
+public class Item implements Entity<Long> {
+    private Long identity;
+    private String name;
     private String writer;
+    private List<Attribute> attributes = new LinkedList<>();
     private LocalDateTime writeDate = LocalDateTime.now();
-    private ItemTemplate itemTemplate;
     private List<Tag> tag;
 
     public List<Tag> getTag() {
@@ -35,38 +38,20 @@ public class Item implements Entity {
         this.writeDate = writeDate;
     }
 
-    public ItemTemplate getItemTemplate() {
-        return itemTemplate;
+    public String getName() {
+        return name;
     }
 
-    public void setItemTemplate(ItemTemplate itemTemplate) {
-        this.itemTemplate = itemTemplate;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
-    public Integer getIdentity() {
+    public Long getIdentity() {
         return identity;
     }
 
-    public void setIdentity(Integer identity) {
+    public void setIdentity(Long identity) {
         this.identity = identity;
-    }
-
-    @Override
-    public String getEntityName() {
-        return getTitle();
-    }
-
-    @Override
-    public LocalDateTime getCreateTime() {
-        return writeDate;
     }
 }

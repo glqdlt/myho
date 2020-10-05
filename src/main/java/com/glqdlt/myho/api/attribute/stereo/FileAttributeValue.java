@@ -1,6 +1,6 @@
 package com.glqdlt.myho.api.attribute.stereo;
 
-public class FileAttribute extends AttributeBase<String> {
+public class FileAttributeValue extends AttributeValueBase<String> {
     private String uplodePath;
 
     public String getUplodePath() {
@@ -12,8 +12,8 @@ public class FileAttribute extends AttributeBase<String> {
     }
 
     @Override
-    public Integer getAttributeType() {
-        return 5;
+    public Integer getAttributeFormType() {
+        return AttribueTypeStereoes.FILE.getType();
     }
 
     @Override

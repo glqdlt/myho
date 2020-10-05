@@ -1,4 +1,4 @@
-package com.glqdlt.myho.api.attribute;
+package com.glqdlt.myho.api;
 
 import java.time.LocalDateTime;
 
@@ -21,4 +21,9 @@ public class RangeTime {
     public void setTo(LocalDateTime to) {
         this.to = to;
     }
+
+    public Boolean valid(){
+        return getFrom().compareTo(getTo()) < 1;
+    }
+
 }

@@ -1,13 +1,7 @@
 package com.glqdlt.myho.api;
 
-import java.time.LocalDateTime;
+public interface Entity<T> {
 
-public interface Entity {
-
-    Integer getIdentity();
-
-    String getEntityName();
-
-    LocalDateTime getCreateTime();
+    T getIdentity();
 
 }

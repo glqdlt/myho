@@ -1,6 +1,6 @@
 package com.glqdlt.myho.api.attribute.stereo;
 
-public class StringAttribute extends AttributeBase<String>{
+public class StringAttributeValue extends AttributeValueBase<String> {
 
     private String value;
 
@@ -9,8 +9,8 @@ public class StringAttribute extends AttributeBase<String>{
     }
 
     @Override
-    public Integer getAttributeType() {
-        return 1;
+    public Integer getAttributeFormType() {
+        return AttribueTypeStereoes.TEXT.getType();
     }
 
     @Override

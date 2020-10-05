@@ -1,6 +1,6 @@
 package com.glqdlt.myho.api.attribute.stereo;
 
-public class NumberAttribute extends AttributeBase<Long> {
+public class NumberAttributeValue extends AttributeValueBase<Long> {
     private Long value;
 
     public void setValue(Long value) {
@@ -8,12 +8,13 @@ public class NumberAttribute extends AttributeBase<Long> {
     }
 
     @Override
-    public Integer getAttributeType() {
-        return 2;
+    public Integer getAttributeFormType() {
+        return AttribueTypeStereoes.NUMBER.getType();
     }
 
     @Override
     public Long getValue() {
         return value;
     }
+
 }

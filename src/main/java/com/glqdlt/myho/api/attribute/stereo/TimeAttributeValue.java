@@ -2,7 +2,7 @@ package com.glqdlt.myho.api.attribute.stereo;
 
 import java.time.LocalDateTime;
 
-public class TimeAttribute extends AttributeBase<LocalDateTime> {
+public class TimeAttributeValue extends AttributeValueBase<LocalDateTime> {
     private LocalDateTime value;
 
     public void setValue(LocalDateTime value) {
@@ -10,8 +10,8 @@ public class TimeAttribute extends AttributeBase<LocalDateTime> {
     }
 
     @Override
-    public Integer getAttributeType() {
-        return 3;
+    public Integer getAttributeFormType() {
+        return AttribueTypeStereoes.TIME.getType();
     }
 
     @Override
