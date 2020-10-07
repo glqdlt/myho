@@ -1,7 +1,9 @@
 package com.glqdlt.myho.api.attribute;
 
-import com.glqdlt.myho.api.attribute.AttributeKey;
+import java.util.function.Function;
 
-public interface AttributeFormType<T> extends AttributeKey<T> {
+public interface AttributeFormType<T> {
     Class<T> getValueType();
+
+    Function<String, String> getDrawSourceResolver();
 }

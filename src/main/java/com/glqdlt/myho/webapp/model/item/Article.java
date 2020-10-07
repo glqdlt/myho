@@ -2,13 +2,15 @@ package com.glqdlt.myho.webapp.model.item;
 
 import com.glqdlt.myho.api.Item;
 
+import java.util.Collections;
+
 public class Article extends Item {
 
     private String title;
     private String writer;
 
     public Article() {
-        getAttributes().add(new ArticleBoardAttribute());
+        setAttributes(Collections.singletonList(new ArticleBoardAttribute(0)));
     }
 
     public String getWriter() {
@@ -25,6 +27,16 @@ public class Article extends Item {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String getName() {
+        return getTitle();
+    }
+
+    @Override
+    public void setName(String name) {
+        setTitle(name);
     }
 
     @Override

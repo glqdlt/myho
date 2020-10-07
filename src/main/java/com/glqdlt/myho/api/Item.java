@@ -55,4 +55,5 @@ public abstract class Item implements Entity<Long> {
     public void setAttributes(List<Attribute<?>> attributes) {
         this.attributes = attributes;
     }
+
 }
