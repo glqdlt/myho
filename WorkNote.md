@@ -64,3 +64,99 @@ class KeyValueBridgeClass<T>{
 이렇게 하면 되는거아닌가?
 
 내가 멍청했다.
+
+
+----
+
+ORM 에서 상속이란 참 어려운 문제이다.
+
+JPA 기준이지만 기본적으로 1뎁스의 상속은 ORM에서 구현이 가능하다. 
+
+다만 다중상속(다중구현이 정확하다) 이나 2뎁스 이상의 상속은 어렵다.
+
+예를 들면 아래와 같다.
+
+
+case1) 아래는 JPA에서 구현이 가능하다.
+```
+
+AbstractEntity <|-- Entity1
+AbstractEntity <|-- Entity2
+
+```
+
+case2) 다만 아래의 경우 불가능하다.
+
+```
+
+AbstractEntity <|-- Entity1
+AbstractEntity <|-- Entity2
+
+Entity1 <|-- Entitiy1_1
+
+```
+
+case2의 경우에는 아래처럼 확장이 아닌 연관 관계(Association(Aggregation))로 접근하면 흉내가 가능하다.
+
+```
+
+AbstractEntity <|-- Entity1
+AbstractEntity <|-- Entity2
+
+Entity1 <-- Entitiy1_1
+Entity1 <-- Entitiy1_2
+
+```
+이제 문제는 정수증가값 identity 에 대한 고민이 생긴다. 
+
+보통 검색을 한다면, 같은 상위 타입을 묶어서 검색하게 되는 데,
+
+DB 에서는 인스턴스 고유 식별을 PK에 의존하게 됨으로, 단순정수값이 중복되면 안된다. 이게 무슨말이냐면..
+
+tb_abstract_entity, auto identity last 2
+
+entity1_1, auto indentity last 1
+
+2테이블이 서로 분리되어 있고, JPA 사양에 따라 상속관계에서만 PK(@Id) 를 공유context 로 사용되기 떄문에
+
+순차 증가가 따로 놀게 되서 싱크가 맞지 않게 된다.
+
+이렇게 되면 같은 타입을 검색하기 위해서는 union을 한다던지로 접근해야 하는데, 이는 객체지향적이지 않는 방법이다(자바로 치면 결국, 각 타입에 맞는 저장소(repository)를 구현하고 해당 결과 collection들을 merge 하는 식으로)
+
+이 부분에 대해서 많은 고민이 생기게 된다.
+
+결국은   
+
+```
+
+AbstractEntity <|-- Entity1
+AbstractEntity <|-- Entity2
+AbstractEntity <|-- Entity3
+AbstractEntity <|-- Entity4
+
+Entity3 <-- Entitiy1_1
+Entity4 <-- Entitiy1_2
+
+class Entity3 extends AbstractEntity{
+
+    @Id
+    @GenerateValue(identity)
+    private Long id;
+
+    @OneToOne()
+    private Entitiy1_1 ref;
+
+}
+
+class Entitiy1_1 extends AbstractEntity{
+
+    @Id
+    @GenerateValue
+    private Long id;
+
+}
+
+```
+
+이런식으로 Entity1 의 하위 타입을 연결하는 Entity를 만들어서 분리 된 식별자를 묶는 엔티티가 생겨나게 된다.
+
