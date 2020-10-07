@@ -1,12 +1,11 @@
 package com.glqdlt.myho.api.attribute;
 
-public interface AttributeValue<T>{
-    Integer getAttributeFormType();
+public interface AttributeValue<V> {
 
-    T getValue();
+    V getValue();
 
-    default Boolean valid(T t){
+    default Boolean valid(V t) {
         return t != null;
-    };
+    }
 
 }

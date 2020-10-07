@@ -6,11 +6,12 @@ import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Item implements Entity<Long> {
+public abstract class Item implements Entity<Long> {
+    public abstract String getItemTypeName();
+
     private Long identity;
     private String name;
-    private String writer;
-    private List<Attribute> attributes = new LinkedList<>();
+    private List<Attribute<?>> attributes = new LinkedList<>();
     private LocalDateTime writeDate = LocalDateTime.now();
     private List<Tag> tag;
 
@@ -20,14 +21,6 @@ public class Item implements Entity<Long> {
 
     public void setTag(List<Tag> tag) {
         this.tag = tag;
-    }
-
-    public String getWriter() {
-        return writer;
-    }
-
-    public void setWriter(String writer) {
-        this.writer = writer;
     }
 
     public LocalDateTime getWriteDate() {
@@ -53,5 +46,13 @@ public class Item implements Entity<Long> {
 
     public void setIdentity(Long identity) {
         this.identity = identity;
+    }
+
+    public List<Attribute<?>> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(List<Attribute<?>> attributes) {
+        this.attributes = attributes;
     }
 }

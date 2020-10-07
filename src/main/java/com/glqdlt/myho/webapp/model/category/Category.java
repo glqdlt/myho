@@ -1,6 +1,8 @@
-package com.glqdlt.myho.api;
+package com.glqdlt.myho.webapp.model.category;
 
-public class Category implements Tag{
+import com.glqdlt.myho.api.Tag;
+
+public class Category implements Tag {
     private String categoryName;
 
     public String getCategoryName() {

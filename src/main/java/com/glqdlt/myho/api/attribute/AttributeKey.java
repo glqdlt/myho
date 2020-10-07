@@ -1,8 +1,7 @@
 package com.glqdlt.myho.api.attribute;
 
-public interface AttributeKey {
+public interface AttributeKey<V> {
+    String getKeyValue();
 
-    String getName();
-
-    AttirubteType getAttributeType();
+    String getKeyDisplayText();
 }
