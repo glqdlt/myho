@@ -1,17 +1,13 @@
 package com.glqdlt.myho.webapp.model.item;
 
 import com.glqdlt.myho.api.Item;
+import com.glqdlt.myho.api.Tag;
+import com.glqdlt.myho.api.attribute.Attribute;
 
-import java.util.Collections;
-
-public class Article extends Item {
+public abstract class Article<T extends Tag, A extends Attribute<?>> extends Item<T, A> {
 
     private String title;
     private String writer;
-
-    public Article() {
-        setAttributes(Collections.singletonList(new ArticleBoardAttribute(0)));
-    }
 
     public String getWriter() {
         return writer;

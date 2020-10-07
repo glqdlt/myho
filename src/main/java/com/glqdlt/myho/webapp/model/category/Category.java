@@ -14,11 +14,6 @@ public class Category implements Tag {
     }
 
     @Override
-    public Integer getTagType() {
-        return 2;
-    }
-
-    @Override
     public String getName() {
         return getCategoryName();
     }
