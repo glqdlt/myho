@@ -1,11 +1,9 @@
 package com.glqdlt.myho.webapp.model.item;
 
-import javax.persistence.Transient;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-public class SimpleItemEntity extends AbstractItemEntity {
-    @Transient
-    @Override
-    public String getItemTypeName() {
-        return "i";
-    }
+@Entity
+@Table
+public class SimpleItemEntity extends ItemEntity {
 }

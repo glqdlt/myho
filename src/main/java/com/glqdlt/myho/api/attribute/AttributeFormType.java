@@ -6,4 +6,6 @@ public interface AttributeFormType<T> {
     Class<T> getValueType();
 
     Function<String, String> getDrawSourceResolver();
+
+    Integer getTypeNumber();
 }

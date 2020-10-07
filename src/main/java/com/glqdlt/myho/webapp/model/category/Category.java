@@ -2,19 +2,12 @@ package com.glqdlt.myho.webapp.model.category;
 
 import com.glqdlt.myho.api.Tag;
 
-public class Category implements Tag {
-    private String categoryName;
+public interface Category extends Tag {
 
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
+    String getCategoryName();
 
     @Override
-    public String getName() {
+    default String getName() {
         return getCategoryName();
     }
 }

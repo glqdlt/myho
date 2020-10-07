@@ -1,5 +1,7 @@
 package com.glqdlt.myho.api.attribute;
 
-public interface AttributeIdentityKey {
+public interface AttributeDrawable {
     String getKeyValue();
+
+    String getDrawSource();
 }

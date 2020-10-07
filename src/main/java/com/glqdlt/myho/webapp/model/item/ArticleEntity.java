@@ -1,52 +1,32 @@
 package com.glqdlt.myho.webapp.model.item;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.List;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-public class ArticleEntity extends Article<TagEntity, AttributeEntity<?>> {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "seq")
-    @Override
-    public Long getIdentity() {
-        return super.getIdentity();
-    }
+@Entity
+@Table
+@DiscriminatorValue("a")
+public class ArticleEntity extends ItemEntity implements Article<TagAbstractEntity, AttributeEntity<?>> {
+
+    private String writer;
+    private String title;
 
     @Override
     public String getWriter() {
-        return super.getWriter();
+        return writer;
+    }
+
+    public void setWriter(String writer) {
+        this.writer = writer;
     }
 
     @Override
     public String getTitle() {
-        return super.getTitle();
+        return title;
     }
 
-    @Transient
-    @Override
-    public String getName() {
-        return super.getName();
-    }
-
-    @Transient
-    @Override
-    public String getItemTypeName() {
-        return super.getItemTypeName();
-    }
-
-    @Override
-    public List<TagEntity> getTag() {
-        return super.getTag();
-    }
-
-    @Override
-    public LocalDateTime getWriteDate() {
-        return super.getWriteDate();
-    }
-
-    @Override
-    public List<AttributeEntity<?>> getAttributes() {
-        return super.getAttributes();
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
