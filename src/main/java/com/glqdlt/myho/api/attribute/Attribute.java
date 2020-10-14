@@ -1,6 +1,6 @@
 package com.glqdlt.myho.api.attribute;
 
-public interface Attribute<V> extends AttributeIdentityKey, AttributeFormType {
+public interface Attribute<V> extends AttributeFormType {
 
     AttributeValue<V> getAttributeValue();
 

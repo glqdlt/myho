@@ -1,8 +1,8 @@
 package com.glqdlt.myho.webapp.model.category;
 
-import com.glqdlt.myho.api.Tag;
+import com.glqdlt.myho.webapp.model.item.TagEntity;
 
-public class Category implements Tag {
+public class CategoryEntity extends TagEntity {
     private String categoryName;
 
     public String getCategoryName() {

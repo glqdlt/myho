@@ -1,10 +1,8 @@
 package com.glqdlt.myho.webapp.model.item;
 
-import com.glqdlt.myho.api.Item;
-
 import java.util.Collections;
 
-public class Article extends Item {
+public class Article extends ItemEntity {
 
     private String title;
     private String writer;
