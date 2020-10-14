@@ -1,13 +1,10 @@
 package com.glqdlt.myho.api.attribute;
 
-public interface Attribute<V> extends AttributeIdentityKey {
-    AttributeFormType<V> getAttributeFormType();
+public interface Attribute<V> extends AttributeIdentityKey, AttributeFormType {
 
     AttributeValue<V> getAttributeValue();
 
     String attributeDisplayText();
-
-    String getDrawSource();
 
     /**
      * 에센딩(asc) 우선 순위 정렬.
