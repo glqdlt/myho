@@ -1,9 +1,14 @@
-package com.glqdlt.myho.webapp.model.item;
+package com.glqdlt.myho.webapp.site.tag;
 
 import com.glqdlt.myho.api.Entity;
 import com.glqdlt.myho.api.Tag;
 
-public abstract class TagEntity implements Tag, Entity<Long> {
+import javax.persistence.*;
+
+@javax.persistence.Entity
+@Table(name = "tb_tag")
+@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.INTEGER)
+public abstract class TagAbstractEntity implements Tag, Entity<Long> {
     private Long identity;
     private String name;
 
@@ -15,6 +20,8 @@ public abstract class TagEntity implements Tag, Entity<Long> {
         this.identity = identity;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Override
     public Long getIdentity() {
         return identity;
