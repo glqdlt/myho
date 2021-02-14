@@ -1,4 +1,4 @@
-package com.glqdlt.myho.webapp.site;
+package com.glqdlt.myho.webapp.navigation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface NavigationMenu {
+public @interface NavMenu {
     String displayName();
 
     String iconCssName() default "";

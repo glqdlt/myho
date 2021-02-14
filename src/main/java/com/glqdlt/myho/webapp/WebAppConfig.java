@@ -2,7 +2,7 @@ package com.glqdlt.myho.webapp;
 
 import com.glqdlt.myho.webapp.navigation.AbstractNavigationMenuPainter;
 import com.glqdlt.myho.webapp.navigation.PainterStore;
-import com.glqdlt.myho.webapp.site.NavigationMenu;
+import com.glqdlt.myho.webapp.navigation.NavMenu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -58,10 +58,10 @@ public class WebAppConfig implements WebMvcConfigurer {
         Map<RequestMappingInfo, HandlerMethod> methods = r.getHandlerMethods();
         List<AbstractNavigationMenuPainter.Single> completeItems = methods.keySet().stream().filter(x -> {
             HandlerMethod ccc = methods.get(x);
-            return ccc.getMethodAnnotation(NavigationMenu.class) != null;
+            return ccc.getMethodAnnotation(NavMenu.class) != null;
         }).map(x -> {
             HandlerMethod r2 = methods.get(x);
-            NavigationMenu navMenuAppendInfor = r2.getMethodAnnotation(NavigationMenu.class);
+            NavMenu navMenuAppendInfor = r2.getMethodAnnotation(NavMenu.class);
             AbstractNavigationMenuPainter.Single single = new AbstractNavigationMenuPainter.Single();
             single.setupMainMenu();
             String[] a = replace.apply(x.toString());
