@@ -15,9 +15,7 @@ import java.util.List;
  */
 @javax.persistence.Entity
 @Table(name = "tb_item")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "type")
-public class AbstractItemEntity implements Entity<Long>, Item<AttributeEntity, TagAbstractEntity> {
+public class ItemEntity implements Entity<Long>, Item<AttributeEntity, TagAbstractEntity> {
 
     private Long identity;
     private String name;
@@ -72,7 +70,7 @@ public class AbstractItemEntity implements Entity<Long>, Item<AttributeEntity, T
     }
 
     @OneToMany
-    @JoinTable(name="tb_item_att")
+    @JoinTable(name = "tb_item_att")
     @Override
     public List<AttributeEntity> getAttributes() {
         return attributes;
@@ -80,15 +78,9 @@ public class AbstractItemEntity implements Entity<Long>, Item<AttributeEntity, T
 
 
     @OneToMany
-    @JoinTable(name="tb_item_tag")
+    @JoinTable(name = "tb_item_tag")
     @Override
     public List<TagAbstractEntity> getTag() {
         return tag;
-    }
-
-    @javax.persistence.Entity
-    @DiscriminatorValue("d")
-    public static class SimpleItem extends AbstractItemEntity {
-
     }
 }
