@@ -3,29 +3,34 @@ package com.glqdlt.myho.webapp;
 import com.glqdlt.myho.webapp.navigation.AbstractNavigationMenuPainter;
 import com.glqdlt.myho.webapp.navigation.NavigationPainter;
 import com.glqdlt.myho.webapp.navigation.PainterStore;
-
-import java.util.Arrays;
+import com.glqdlt.myho.webapp.navigation.RootNavigationPainter;
 
 public class HardCodingMenuPainter implements PainterStore {
     public NavigationPainter getAllSource() {
-        AbstractNavigationMenuPainter f = new AbstractNavigationMenuPainter.Single();
-        f.setDisplayText("1");
+        AbstractNavigationMenuPainter.Single dashboard = new AbstractNavigationMenuPainter.Single();
+        dashboard.setDisplayText("대시보드");
+        dashboard.setCssClassName("fa fa-dashboard");
 
-        AbstractNavigationMenuPainter fff = new AbstractNavigationMenuPainter.Single();
-        fff.setDisplayText("2-1");
-        AbstractNavigationMenuPainter fff2 = new AbstractNavigationMenuPainter.Single();
-        fff2.setDisplayText("2-2");
+        AbstractNavigationMenuPainter.Multiple item = new AbstractNavigationMenuPainter.Multiple();
+        item.setDisplayText("아이템");
+        item.setCssClassName("fa fa-table");
+
+        AbstractNavigationMenuPainter.Single item1 = new AbstractNavigationMenuPainter.Single();
+        item1.setDisplayText("아이템 보기");
+        item1.setLinkUrl("/item");
+
+        AbstractNavigationMenuPainter.Single item2 = new AbstractNavigationMenuPainter.Single();
+        item2.setDisplayText("아이템 관리");
+        item2.setLinkUrl("/item/setup");
+
+        item.add(item1);
+        item.add(item2);
 
 
-        AbstractNavigationMenuPainter f3 = new AbstractNavigationMenuPainter.Single();
-        f3.setDisplayText("3");
+        RootNavigationPainter root = new RootNavigationPainter();
+        root.append(dashboard);
+        root.append(item);
 
-
-        AbstractNavigationMenuPainter f2 = new AbstractNavigationMenuPainter.Multiple(Arrays.asList(fff, fff2));
-        f2.setDisplayText("2");
-        AbstractNavigationMenuPainter root = new AbstractNavigationMenuPainter.Multiple(Arrays.asList(f, f2, f3));
-        root.setDisplayText("0");
-        root.setupRootMenu();
         return root;
     }
 

@@ -1,17 +1,24 @@
 package com.glqdlt.myho.webapp.navigation;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  * @author glqdlt
  */
-public abstract class AbstractNavigationMenuPainter implements NavigationPainter {
+public abstract class AbstractNavigationMenuPainter implements NavigationPainter, NavigationMenu {
     private String displayText = "";
-    private String cssClassName = "fa fa-circle-o";
+    private String cssClassName = "fa fa-minus";
     private String linkUrl = "#";
+
+    @Override
+    public String getMethod() {
+        return "GET";
+    }
+
     private NavigationDisplayTextRender navigationDisplayTextRender = NavigationDisplayTextRenders.SUB_MENU;
 
-    public void setupRootMenu() {
+    public void setupMainMenu() {
         this.navigationDisplayTextRender = NavigationDisplayTextRenders.MAIN_MENU;
     }
 
@@ -59,10 +66,20 @@ public abstract class AbstractNavigationMenuPainter implements NavigationPainter
 
     public static class Multiple extends AbstractNavigationMenuPainter {
 
-        private final List<AbstractNavigationMenuPainter> child;
+        private final List<AbstractNavigationMenuPainter> child = new LinkedList<>();
+
+        public Multiple() {
+            super.setCssClassName("fa fa-plus");
+        }
+
 
         public Multiple(List<AbstractNavigationMenuPainter> child) {
-            this.child = child;
+            super();
+            this.child.addAll(child);
+        }
+
+        public void add(AbstractNavigationMenuPainter child) {
+            this.child.add(child);
         }
 
         public List<AbstractNavigationMenuPainter> getChild() {

@@ -7,10 +7,4 @@ public interface NavigationMenu extends UrlIdentity {
 
     String getCssClassName();
 
-    String getPath();
-
-    default String getMethod() {
-        return "GET";
-    }
-
 }
