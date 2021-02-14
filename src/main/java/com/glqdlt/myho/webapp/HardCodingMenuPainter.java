@@ -5,8 +5,17 @@ import com.glqdlt.myho.webapp.navigation.NavigationPainter;
 import com.glqdlt.myho.webapp.navigation.PainterStore;
 import com.glqdlt.myho.webapp.navigation.RootNavigationPainter;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+/**
+ * @author glqdlt
+ */
 public class HardCodingMenuPainter implements PainterStore {
-    public NavigationPainter getAllSource() {
+    private final List<AbstractNavigationMenuPainter> sources = new LinkedList<>();
+
+    public HardCodingMenuPainter() {
         AbstractNavigationMenuPainter.Single dashboard = new AbstractNavigationMenuPainter.Single();
         dashboard.setDisplayText("대시보드");
         dashboard.setCssClassName("fa fa-dashboard");
@@ -26,12 +35,26 @@ public class HardCodingMenuPainter implements PainterStore {
         item.add(item1);
         item.add(item2);
 
+        sources.add(dashboard);
+        sources.add(item);
+    }
 
+    public NavigationPainter getRoot() {
         RootNavigationPainter root = new RootNavigationPainter();
-        root.append(dashboard);
-        root.append(item);
-
+        for (AbstractNavigationMenuPainter d : findAll()) {
+            root.append(d);
+        }
         return root;
+    }
+
+    @Override
+    public List<AbstractNavigationMenuPainter> findAll() {
+        return new ArrayList<>(this.sources);
+    }
+
+    @Override
+    public void append(AbstractNavigationMenuPainter navigationPainter) {
+        this.sources.add(navigationPainter);
     }
 
 }

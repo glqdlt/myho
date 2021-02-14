@@ -12,14 +12,14 @@ import java.security.Principal;
 /**
  * @author glqdlt
  */
-public class InvokeNavigationDrawer implements HandlerInterceptor {
+public class InvokeNavigationPainter implements HandlerInterceptor {
     private PainterStore store;
 
     private Boolean isSecurity;
 
     private static final String KEY = "_navigationSource";
 
-    public InvokeNavigationDrawer(PainterStore store, Boolean isSecurity) {
+    public InvokeNavigationPainter(PainterStore store, Boolean isSecurity) {
         this.store = store;
         this.isSecurity = isSecurity;
     }
@@ -27,13 +27,13 @@ public class InvokeNavigationDrawer implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         HttpSession session = request.getSession();
-        if (session.getAttribute(KEY) == null) {
+        if (session != null && session.getAttribute(KEY) == null) {
             final String source;
             if (isSecurity) {
                 Principal principal = request.getUserPrincipal();
-                source = store.getAllSource().draw();
+                source = store.getRoot().draw();
             } else {
-                source = store.getAllSource().draw();
+                source = store.getRoot().draw();
             }
             session.setAttribute(KEY, source);
         }
