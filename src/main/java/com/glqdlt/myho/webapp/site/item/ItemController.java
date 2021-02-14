@@ -1,4 +1,4 @@
-package com.glqdlt.myho.webapp.site.dashboard;
+package com.glqdlt.myho.webapp.site.item;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author glqdlt
  */
 @Controller
-@RequestMapping("/dashboard")
-public class DashBoardController {
+@RequestMapping("/item")
+public class ItemController {
 
     @GetMapping
-    public String getDashboard() {
-        return "site/dashboard";
+    public String aaa() {
+        return "bb";
     }
 
-    @PostMapping
-    public String postDashboard() {
+    @PostMapping("/aaaa")
+    public String gg() {
         return "aa";
     }
 }

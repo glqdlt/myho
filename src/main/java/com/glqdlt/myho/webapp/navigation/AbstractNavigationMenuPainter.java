@@ -41,7 +41,7 @@ public abstract class AbstractNavigationMenuPainter implements NavigationPainter
         this.cssClassName = cssClassName;
     }
 
-    public String getLinkUrl() {
+    public String getPath() {
         return linkUrl;
     }
 
@@ -53,7 +53,7 @@ public abstract class AbstractNavigationMenuPainter implements NavigationPainter
 
         @Override
         public String draw() {
-            return String.format("<li><a href='%s'><i class='%s'></i>%s</a></li>", getLinkUrl(), getCssClassName(), getNavigationDisplayTextRender());
+            return String.format("<li><a href='%s'><i class='%s'></i>%s</a></li>", getPath(), getCssClassName(), getNavigationDisplayTextRender());
         }
     }
 
@@ -88,7 +88,7 @@ public abstract class AbstractNavigationMenuPainter implements NavigationPainter
                     "<ul class='treeview-menu' style='display: none;'>" +
                     "%s" +
                     "</ul>" +
-                    "</li>", getLinkUrl(), getCssClassName(), getNavigationDisplayTextRender(), childDrawSource.toString());
+                    "</li>", getPath(), getCssClassName(), getNavigationDisplayTextRender(), childDrawSource.toString());
         }
     }
 }

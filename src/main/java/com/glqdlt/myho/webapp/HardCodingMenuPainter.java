@@ -1,18 +1,13 @@
-package com.glqdlt.myho.webapp.site;
+package com.glqdlt.myho.webapp;
 
 import com.glqdlt.myho.webapp.navigation.AbstractNavigationMenuPainter;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import com.glqdlt.myho.webapp.navigation.NavigationPainter;
+import com.glqdlt.myho.webapp.navigation.PainterStore;
 
 import java.util.Arrays;
 
-/**
- * @author glqdlt
- */
-public class ViewTypeControllerBase {
-    @ModelAttribute
-    public void setupNav(Model model) {
-
+public class HardCodingMenuPainter implements PainterStore {
+    public NavigationPainter getAllSource() {
         AbstractNavigationMenuPainter f = new AbstractNavigationMenuPainter.Single();
         f.setDisplayText("1");
 
@@ -31,7 +26,7 @@ public class ViewTypeControllerBase {
         AbstractNavigationMenuPainter root = new AbstractNavigationMenuPainter.Multiple(Arrays.asList(f, f2, f3));
         root.setDisplayText("0");
         root.setupRootMenu();
-
-        model.addAttribute("navSource", root.draw());
+        return root;
     }
+
 }
