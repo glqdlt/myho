@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @author glqdlt
  */
-public abstract class AbstractNavigationMenuPainter implements NavigationMenu, NavigationPainter {
+public abstract class AbstractNavigationMenuPainter implements NavigationPainter {
     private String displayText = "";
     private String cssClassName = "fa fa-circle-o";
     private String linkUrl = "#";
