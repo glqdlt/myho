@@ -7,6 +7,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="/webjars/fontawesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/webjars/ionicons/4.6.3/dist/css/ionicons.min.css">
     <link rel="stylesheet" href="/webjars/adminlte/2.3.11/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/webjars/adminlte/2.3.11/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/webjars/adminlte/2.3.11/dist/css/skins/_all-skins.min.css">
@@ -229,12 +230,12 @@
     }
     </style>
 </head>
-<body class="skin-blue sidebar-mini" style="height: auto; min-height: 100%;">
-<div class="wrapper" style="height: auto; min-height: 100%;">
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="../../index2.html" class="logo">
+        <a href="/" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
             <!-- logo for regular state and mobile devices -->
@@ -245,9 +246,6 @@
             <!-- Sidebar toggle button-->
             <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                 <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
             </a>
 
             <div class="navbar-custom-menu">
@@ -478,7 +476,7 @@
                                     <small>Member since Nov. 2012</small>
                                 </p>
                             </li>
-                            <!-- Menu Body -->
+                            <!-- AbstractNavigationMenuPainter Body -->
                             <li class="user-body">
                                 <div class="row">
                                     <div class="col-xs-4 text-center">
@@ -493,7 +491,7 @@
                                 </div>
                                 <!-- /.row -->
                             </li>
-                            <!-- Menu Footer-->
+                            <!-- AbstractNavigationMenuPainter Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
@@ -540,41 +538,11 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu tree" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
-                <li class="treeview" style="height: auto;">
-                    <a href="#">
-                        <i class="fa fa-share"></i> <span>Multilevel</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu" style="display: none;">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                        <li class="treeview" style="height: auto;">
-                            <a href="#"><i class="fa fa-circle-o"></i> Level One
-                                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-                            </a>
-                            <ul class="treeview-menu" style="display: none;">
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                                <li class="treeview">
-                                    <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                                        <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                                    </a>
-                                    <ul class="treeview-menu" style="display: none;">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                    </ul>
-                </li>
 
-                <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
+                <th:block th:utext="${navSource}">
+
+                </th:block>
+
                 <li class="header">LABELS</li>
                 <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
                 <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
